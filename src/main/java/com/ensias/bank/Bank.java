@@ -17,7 +17,6 @@ public class Bank {
         this.name = name;
     }
 
-
     /**
      * US1 : Deposit money on a client's account
      */
@@ -71,6 +70,27 @@ public class Bank {
         return accounts.stream()
                 .filter(account -> client.equals(account.getAccountHolder()) )
                 .findAny();
+    }
+
+    /**
+     * Create an account for a User
+     */
+    public void createAccount(Client client) {
+        accounts.add(new Account(client, generateUniqueAccountNumber(client)));
+    }
+
+    private String generateUniqueAccountNumber(Client client) {
+        return accounts.size()+1+client.getFirstName()+client.getLastName();
+    }
+
+    /**
+     * Get client's balance
+     */
+    public BigDecimal getBalance(Client client) {
+        Optional<Account> account = getAccountByClient(client);
+        if(account.isEmpty())
+            return new BigDecimal(0);
+        return account.get().getBalance();
     }
 
 }
