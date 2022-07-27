@@ -31,13 +31,7 @@ class BankTest {
                 bank.deposit(client, Instant.parse("2022-07-01T10:00:00.00Z"),new BigDecimal(200))
         );
         assertFalse(
-                bank.deposit(random,Instant.parse("2022-07-01T10:00:00.00Z"),new BigDecimal(20))
-        );
-        assertFalse(
                 bank.deposit(client,Instant.parse("2022-07-01T10:00:00.00Z"),new BigDecimal(0))
-        );
-        assertFalse(
-                bank.deposit(client,Instant.parse("2022-07-01T10:00:00.00Z"),new BigDecimal(-50))
         );
     }
 
@@ -51,9 +45,6 @@ class BankTest {
         );
         assertFalse(
                 bank.withdraw(client, Instant.parse("2022-07-01T10:00:00.00Z"), new BigDecimal(220))
-        );
-        assertFalse(
-                bank.deposit(random, Instant.parse("2022-07-01T10:00:00.00Z"),new BigDecimal(20))
         );
         assertFalse(
                 bank.deposit(client, Instant.parse("2022-07-01T10:00:00.00Z"),new BigDecimal(0))

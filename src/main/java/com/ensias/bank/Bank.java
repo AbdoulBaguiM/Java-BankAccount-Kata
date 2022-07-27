@@ -23,13 +23,14 @@ public class Bank {
     public boolean deposit(Client creditor, Instant date, BigDecimal amount) {
         Optional<Account> accountToCredit = getAccountByClient(creditor);
 
-        if(accountToCredit.isEmpty())
+        if(!accountToCredit.isPresent())
             return false;
 
         try {
             if(accountToCredit.get().addTransaction(creditor, date, amount) != null)
                 return true;
         } catch(InvalidTransactionException e) {
+            System.err.println(e);
             return false;
         }
 
@@ -42,13 +43,14 @@ public class Bank {
     public boolean withdraw(Client debtor, Instant date, BigDecimal amount) {
         Optional<Account> accountToCredit = getAccountByClient(debtor);
 
-        if(accountToCredit.isEmpty())
+        if(!accountToCredit.isPresent())
             return false;
 
         try {
             accountToCredit.get().addTransaction(debtor, date, amount.negate());
             return true;
         } catch(InvalidTransactionException e) {
+            System.err.println(e);
             return false;
         }
     }
@@ -88,9 +90,8 @@ public class Bank {
      */
     public BigDecimal getBalance(Client client) {
         Optional<Account> account = getAccountByClient(client);
-        if(account.isEmpty())
+        if(!account.isPresent())
             return new BigDecimal(0);
         return account.get().getBalance();
     }
-
 }

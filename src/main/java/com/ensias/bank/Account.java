@@ -33,10 +33,6 @@ public class Account {
             throw new InvalidTransactionException("Please specify the account holder !");
         if(!user.equals(accountHolder))
             throw new InvalidTransactionException("Wrong account");
-        if(user.equals(accountHolder) && amount.compareTo(new BigDecimal(0)) < 0)
-            throw new InvalidTransactionException("Incorrect amount for the credit transaction");
-        if(user.equals(accountHolder) && amount.compareTo(new BigDecimal(0)) > 0)
-            throw new InvalidTransactionException("Incorrect amount for the debit transaction");
         if(amount.compareTo(new BigDecimal(0)) < 0 && amount.abs().compareTo(getBalance()) > 0)
             throw new InvalidTransactionException("Account not sufficiently provisionned : " +  getBalance() + " < " + amount);
         if(amount.compareTo(new BigDecimal(0)) == 0)
@@ -68,4 +64,5 @@ public class Account {
     public Client getAccountHolder() {
         return accountHolder;
     }
+
 }
