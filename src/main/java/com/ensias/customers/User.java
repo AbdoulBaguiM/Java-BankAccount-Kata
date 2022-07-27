@@ -1,4 +1,4 @@
-package customers;
+package com.ensias.customers;
 
 import java.util.Objects;
 

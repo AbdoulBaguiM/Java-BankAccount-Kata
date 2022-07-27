@@ -1,4 +1,4 @@
-package customers;
+package com.ensias.customers;
 
 public class Client extends User{
 

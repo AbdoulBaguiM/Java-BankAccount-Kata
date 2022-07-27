@@ -1,4 +1,4 @@
-package bank;
+package com.ensias.bank;
 
 public class InvalidTransactionException extends Exception {
 

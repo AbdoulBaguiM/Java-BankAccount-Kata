@@ -1,6 +1,6 @@
-package bank;
+package com.ensias.bank;
 
-import customers.User;
+import com.ensias.customers.User;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -8,16 +8,13 @@ import java.time.Instant;
 public class AccountTransaction {
 
     private final BigDecimal amount;
-    private final User creditor;
-    private final User debtor;
     private final Instant date;
+    private final TransactionType transactionType;
 
-
-    public AccountTransaction(User creditor, User debtor, BigDecimal amount, Instant date) {
-        this.creditor = creditor;
-        this.debtor = debtor;
+    public AccountTransaction(BigDecimal amount, Instant date) {
         this.amount = amount;
         this.date = date;
+        this.transactionType = amount.compareTo(BigDecimal.ZERO) > 0 ? TransactionType.DEPOSIT : TransactionType.WITHDRAWAL;
     }
 
     public BigDecimal getAmount() {
