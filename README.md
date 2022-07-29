@@ -1,6 +1,6 @@
 # Bank Account Kata
 
-*no framework required, just focus on solving the domain problem*
+*No framework required, just focus on solving the domain problem*
 
 Think of your personal bank account experience. When in doubt, go for the simplest solution 
 
