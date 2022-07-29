@@ -10,10 +10,13 @@ public class Main {
     public static void main(String[] args) {
         Bank bank = new Bank("BMCE");
         Client client = new Client("Mohamadou", "Abdoul");
-        Client random = new Client("ZSoft","");
         bank.createAccount(client);
 
-        bank.deposit(client, Instant.now(), new BigDecimal(-400));
-        System.out.println(bank.getBalance(client));
+        bank.deposit(client, Instant.now(), new BigDecimal(400));
+        bank.withdraw(client, Instant.now(), new BigDecimal(50));
+        bank.deposit(client, Instant.now(), new BigDecimal(30));
+        bank.withdraw(client, Instant.now(), new BigDecimal(320));
+
+        System.out.println(bank.getTransactionHistory(client));
     }
 }

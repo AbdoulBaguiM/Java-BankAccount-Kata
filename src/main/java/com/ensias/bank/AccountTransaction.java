@@ -1,10 +1,7 @@
 package com.ensias.bank;
 
-import com.ensias.customers.User;
-
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.util.Objects;
 
 public class AccountTransaction {
 
@@ -24,5 +21,14 @@ public class AccountTransaction {
 
     public Instant getDate() {
         return date;
+    }
+
+    @Override
+    public String toString() {
+        return "AccountTransaction{" +
+                "amount=" + amount +
+                ", date=" + date +
+                ", type=" + transactionType +
+                '}'+'\n';
     }
 }
